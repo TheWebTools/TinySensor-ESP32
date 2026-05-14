@@ -18,13 +18,23 @@ jobs:
           python-version: '3.11'
       - name: Install PlatformIO
         run: pip install platformio
-      - name: Build firmware
+      - name: Build firmware (verbose)
         run: |
           cd firmware
-          pio run -e esp32dev || pio run
-      - name: Collect artifact
+          pio run -v || pio run
+      - name: Show build tree
+        run: |
+          echo "Build tree:"
+          ls -R firmware/.pio || true
+      - name: Collect artifact (robust)
         run: |
           mkdir -p dist
+          # copy firmware.bin from any build subfolder
+          shopt -s nullglob 2>/dev/null || true
+          for f in firmware/.pio/build/*/firmware.bin; do
+            cp "$f" dist/firmware.bin && echo "Copied $f" && break
+          done
+          # fallback: try the exact path used before
           cp firmware/.pio/build/esp32dev/firmware.bin dist/firmware.bin || true
       - uses: actions/upload-artifact@v4
         with:
