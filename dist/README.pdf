@@ -1,0 +1,24 @@
+# TinySensor Firmware for ESP32
+
+**One line**: Prebuilt ESP32 firmware that reads a DHT22 sensor and posts to MQTT.
+
+## What you get
+- firmware.bin — ready to flash (in dist/)
+- checksum.txt — SHA256 checksum for firmware.bin
+- flash.ps1 — PowerShell flashing script for Windows
+- demo.mp4 — 2 minute install and test video
+- README.pdf — optional printable quickstart
+- 7 day email support
+
+## Supported hardware
+- ESP32 DevKitC and common WROOM modules
+- Not guaranteed for ESP32-S2 or heavily modified boards
+
+## Quick Windows install
+1. Install Python 3.10+ from python.org and check `python --version`.
+2. Open PowerShell as Administrator.
+3. Install esptool: `python -m pip install --user esptool`
+4. Put your ESP32 into bootloader mode (hold BOOT while pressing EN, then release EN).
+5. Run:
+   ```powershell
+   .\scripts\flash.ps1 -Port COM3 -Image .\dist\firmware.bin
