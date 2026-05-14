@@ -1,0 +1,25 @@
+What you get:
+
+firmware.bin (prebuilt ESP32 image) 🔋
+
+checksum.txt (SHA256) ✅
+
+demo.log (simulated device output) 📝
+
+flash.ps1, flash.sh (flashing scripts) 💾
+
+mqtt_sub.py, mqtt_simulator.py (verify and simulate) 🔁
+
+README.md and troubleshooting guide 📘🛠️
+
+No hardware required to preview. Run the included simulator to see the exact MQTT payloads the device will publish. 7‑day email support. Full refund within 48 hours if the binary fails on supported hardware and you provide logs.
+
+How to verify:
+
+Unzip and run Get-FileHash -Algorithm SHA256 firmware.bin and compare to checksum.txt.
+
+Run python scripts/mqtt_simulator.py to publish sample messages.
+
+Run python scripts/mqtt_sub.py to subscribe and view messages.
+
+Price: $12 💵
